@@ -5,8 +5,12 @@ import "./App.css";
 import Card from "./components/FirstCard.jsx";
 function App() {
   const tasks = [
-    { title: "Название задачи ", date: "30.10.2023", theme: "orange" },
-    { title: "Название задачи ", date: "31.10.2023", theme: "green" },
+    {
+      title: "Название задачи ",
+      date: "30.10.2023",
+      theme: "green",
+      description: "Research",
+    },
   ];
   return (
     <>
@@ -477,6 +481,7 @@ function App() {
                           title={task.title}
                           date={task.date}
                           theme={task.theme}
+                          description={task.description}
                         />
                       ))}
                     </div>
