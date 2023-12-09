@@ -10,8 +10,14 @@ const tasks = [
   {
     title: "Название задачи ",
     date: "31.10.2023",
-    theme: "green",
-    description: "Research",
+    theme: "orange",
+    description: "Web-designer",
+  },
+  {
+    title: "Название задачи ",
+    date: "31.10.2023",
+    theme: "purple",
+    description: "Web-designer",
   },
 ];
 export default function Column({ title }) {
