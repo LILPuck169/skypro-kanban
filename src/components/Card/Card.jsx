@@ -1,10 +1,10 @@
-const Card = ({ title, date, theme }) => {
+const Card = ({ title, date, theme, description }) => {
   return (
     <div className="cards__item">
       <div className="cards__card card">
         <div className="card__group">
           <div className={`card__theme _${theme}`}>
-            <p className={`_${theme}`}>{theme}</p>
+            <p className={`_${theme}`}>{description}</p>
           </div>
           <a href="#popBrowse" target="_self">
             <div className="card__btn">
