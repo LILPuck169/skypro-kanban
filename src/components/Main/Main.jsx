@@ -1,4 +1,11 @@
 import Column from "../Column/Column";
+const statusList = [
+  "Без статуса",
+  "Нужно сделать",
+  "В работе",
+  "Тестирование",
+  "Готово",
+];
 export default function Main() {
   return (
     <main className="main">
