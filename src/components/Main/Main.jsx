@@ -21,3 +21,4 @@ export default function Main({ cards }) {
     </main>
   );
 }
+// Проверка отправки
