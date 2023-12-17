@@ -1,7 +1,9 @@
 import { useState } from "react";
-export default function Header() {
+
+export default function Header({ addCard }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggkeDropdown = () => setIsOpen((prevState) => !prevState);
+
   return (
     <header className="header">
       <div className="container">
@@ -17,8 +19,11 @@ export default function Header() {
             </a>
           </div>
           <nav className="header__nav">
+            {/* Кнопка по нажатию */}
             <button className="header__btn-main-new _hover01" id="btnMainNew">
-              <a href="#popNewCard">Создать новую задачу</a>
+              <a onClick={addCard} href="#">
+                Создать новую задачу
+              </a>
             </button>
             <a
               onClick={toggkeDropdown}

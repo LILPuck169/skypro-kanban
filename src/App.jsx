@@ -8,11 +8,13 @@ import Main from "./components/Main/Main.jsx";
 import { useState } from "react";
 import { cardList } from "./data.js";
 function App() {
+  console.log(123);
   const [cards, setCards] = useState(cardList);
 
   function addCard() {
+    console.log(321);
     const newCard = {
-      id: cards.lenght + 1,
+      id: cards.length + 1,
       title: "Название задачи ",
       date: "30.10.2023",
       theme: "green",
