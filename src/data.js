@@ -21,3 +21,11 @@ export const cardList = [
     description: "Web-designer",
   },
 ];
+
+export const statusList = [
+  "Без статуса",
+  "Нужно сделать",
+  "В работе",
+  "Тестирование",
+  "Готово",
+];

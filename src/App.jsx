@@ -1,8 +1,4 @@
-// import { useState } from "react";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
 import "./App.css";
-// import Card from "./components/FirstCard.jsx";
 import Wrapper from "./components/Wrapper/Wrapper.jsx";
 import PopExit from "./components/Pop/PopExit.jsx";
 import PopNewCard from "./components/Pop/PopNewCard.jsx";
