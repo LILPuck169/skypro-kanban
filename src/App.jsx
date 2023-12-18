@@ -5,14 +5,13 @@ import PopNewCard from "./components/Pop/PopNewCard.jsx";
 import PopBrowse from "./components/Pop/PopBrowse.jsx";
 import Header from "./components/Header/Header.jsx";
 import Main from "./components/Main/Main.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cardList } from "./data.js";
 function App() {
-  console.log(123);
   const [cards, setCards] = useState(cardList);
+  const [isLoading, setIsLoading] = useState(true);
 
   function addCard() {
-    console.log(321);
     const newCard = {
       id: cards.length + 1,
       title: "Название задачи ",
@@ -23,6 +22,12 @@ function App() {
     };
     setCards([...cards, newCard]);
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+  }, []);
   return (
     <>
       <Wrapper>
@@ -30,7 +35,13 @@ function App() {
         <PopNewCard />
         <PopBrowse />
         <Header addCard={addCard} />
-        <Main cards={cards} />
+        {isLoading ? (
+          <div className="loader">
+            <img src="https://cojo.ru/wp-content/uploads/2022/12/izobrazhenie-zagruzhaetsia-1.webp" />
+          </div>
+        ) : (
+          <Main cards={cards} />
+        )}
       </Wrapper>
       <script src="js/script.js"></script>
     </>

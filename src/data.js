@@ -23,6 +23,22 @@ export const cardList = [
     description: "Web-designer",
     status: "В работе",
   },
+  {
+    id: 4,
+    title: "Название задачи ",
+    date: "31.10.2023",
+    theme: "purple",
+    description: "Web-designer",
+    status: "Тестирование",
+  },
+  {
+    id: 5,
+    title: "Название задачи ",
+    date: "31.10.2023",
+    theme: "purple",
+    description: "Web-designer",
+    status: "Готово",
+  },
 ];
 
 export const statusList = [

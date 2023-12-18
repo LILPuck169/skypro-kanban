@@ -12,7 +12,7 @@ export default function Main({ cards }) {
               <Column
                 key={status}
                 title={status}
-                cardList={cardList.filter((card) => card.status === status)}
+                cardList={cards.filter((card) => card.status === status)}
               />
             ))}
           </div>
