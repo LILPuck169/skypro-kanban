@@ -1,22 +1,24 @@
 import Column from "../Column/Column";
-export default function Main() {
+import { statusList } from "../../data.js";
+import { cardList } from "../../data.js";
+
+export default function Main({ cards }) {
   return (
     <main className="main">
       <div className="container">
         <div className="main__block">
           <div className="main__content">
-            {/* Тут начало  общего блока! */}
-
-            {/* Окончание блоково компонент */}
-            <Column title={`Без статуса`} />
-            <Column title={`Нужно сделать`} />
-            <Column title={`В работе`} />
-            <Column title={`Тестирование`} />
-            <Column title={`Готово`} />
-            {/* ................................................................. */}
+            {statusList.map((status) => (
+              <Column
+                key={status}
+                title={status}
+                cardList={cards.filter((card) => card.status === status)}
+              />
+            ))}
           </div>
         </div>
       </div>
     </main>
   );
 }
+// Проверка отправки
