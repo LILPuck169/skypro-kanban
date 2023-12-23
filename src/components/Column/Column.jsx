@@ -1,5 +1,5 @@
-import Card from "../Card/Card";
-import { cardList } from "../../data.js";
+import Card from "../Card/Card.jsx";
+import { GlobalStyle } from "../GlobalStyle.js";
 
 export default function Column({ title, cardList }) {
   return (

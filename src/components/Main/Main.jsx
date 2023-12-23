@@ -1,11 +1,11 @@
 import Column from "../Column/Column";
 import { statusList } from "../../data.js";
-import { cardList } from "../../data.js";
-
+import { GlobalStyle } from "../GlobalStyle.js";
+import { Container } from "../Header/Header.styled.js";
 export default function Main({ cards }) {
   return (
     <main className="main">
-      <div className="container">
+      <Container>
         <div className="main__block">
           <div className="main__content">
             {statusList.map((status) => (
@@ -17,7 +17,7 @@ export default function Main({ cards }) {
             ))}
           </div>
         </div>
-      </div>
+      </Container>
     </main>
   );
 }

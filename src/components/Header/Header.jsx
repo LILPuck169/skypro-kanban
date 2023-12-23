@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { Container, HeaderStyle } from "./Header.styled";
+import { GlobalStyle } from "../GlobalStyle.js";
 
 export default function Header({ addCard }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggkeDropdown = () => setIsOpen((prevState) => !prevState);
 
   return (
-    <header className="header">
-      <div className="container">
+    <HeaderStyle>
+      <Container>
         <div className="header__block">
           <div className="header__logo _show _light">
             <a href="" target="_self">
@@ -54,7 +56,7 @@ export default function Header({ addCard }) {
             {/* Конец моей карточки */}
           </nav>
         </div>
-      </div>
-    </header>
+      </Container>
+    </HeaderStyle>
   );
 }
