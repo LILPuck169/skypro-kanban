@@ -7,6 +7,7 @@ import Header from "./components/Header/Header.jsx";
 import Main from "./components/Main/Main.jsx";
 import { useState, useEffect } from "react";
 import { cardList } from "./data.js";
+import { GlobalStyle } from "./components/GlobalStyle.js";
 function App() {
   const [cards, setCards] = useState(cardList);
   const [isLoading, setIsLoading] = useState(true);

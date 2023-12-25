@@ -1,4 +1,3 @@
-import { GlobalStyle } from "../GlobalStyle.js";
 import {
   CardBtn,
   CardBtnDiv,
@@ -6,15 +5,17 @@ import {
   CardDate,
   CardGroup,
   CardTheme,
+  CardTitle,
   CardsCard,
   CardsItem,
   ThemeP,
-} from "./Card.js";
+} from "./Card.styled.js";
 const Card = ({ title, date, theme, description }) => {
   return (
     <CardsItem>
       <CardsCard className="cards__card card">
         <CardGroup>
+          {console.log(theme)}
           <CardTheme $themeColor={theme}>
             <ThemeP>{description}</ThemeP>
           </CardTheme>
@@ -28,7 +29,7 @@ const Card = ({ title, date, theme, description }) => {
         </CardGroup>
         <CardContent>
           <a href="" target="_blank">
-            <h3 className="card__title">{title}</h3>
+            <CardTitle>{title}</CardTitle>
           </a>
           <CardDate>
             <svg
