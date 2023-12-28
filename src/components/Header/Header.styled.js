@@ -7,7 +7,6 @@ export const HeaderStyle = styled.header`
 `;
 
 export const Container = styled.div`
-  background-color: red;
   max-width: 1260px;
   width: 100%;
   margin: 0 auto;
