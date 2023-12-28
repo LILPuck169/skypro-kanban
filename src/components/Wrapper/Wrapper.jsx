@@ -1,11 +1,5 @@
-
+import { WrapperWrapper } from "./Wrapper.styled";
 
 export default function Wrapper({ children }) {
-  return (
-    <div className="wrapper">
-      {children}
-
-     
-    </div>
-  );
+  return <WrapperWrapper>{children}</WrapperWrapper>;
 }

@@ -1,13 +1,20 @@
 import { useState } from "react";
+import {
+  Container,
+  HeaderBlock,
+  HeaderNav,
+  HeaderStyle,
+} from "./Header.styled";
 
 export default function Header({ addCard }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggkeDropdown = () => setIsOpen((prevState) => !prevState);
 
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__block">
+    <HeaderStyle>
+      <Container>
+        <HeaderBlock>
+          {/* Не понял кого нужно заменять, в CSS Там написанно header__logo img */}
           <div className="header__logo _show _light">
             <a href="" target="_self">
               <img src="public/logo.png" alt="logo" />
@@ -18,7 +25,8 @@ export default function Header({ addCard }) {
               <img src="images/logo_dark.png" alt="logo" />
             </a>
           </div>
-          <nav className="header__nav">
+
+          <HeaderNav>
             {/* Кнопка по нажатию */}
             <button className="header__btn-main-new _hover01" id="btnMainNew">
               <a onClick={addCard} href="#">
@@ -52,9 +60,9 @@ export default function Header({ addCard }) {
             {/* Моя карточка */}
 
             {/* Конец моей карточки */}
-          </nav>
-        </div>
-      </div>
-    </header>
+          </HeaderNav>
+        </HeaderBlock>
+      </Container>
+    </HeaderStyle>
   );
 }

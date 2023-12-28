@@ -1,3 +1,5 @@
+import { GlobalStyle } from "./components/GlobalStyle.js";
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Wrapper from "./components/Wrapper/Wrapper.jsx";
 import PopExit from "./components/Pop/PopExit.jsx";
@@ -7,6 +9,7 @@ import Header from "./components/Header/Header.jsx";
 import Main from "./components/Main/Main.jsx";
 import { useState, useEffect } from "react";
 import { cardList } from "./data.js";
+
 function App() {
   const [cards, setCards] = useState(cardList);
   const [isLoading, setIsLoading] = useState(true);

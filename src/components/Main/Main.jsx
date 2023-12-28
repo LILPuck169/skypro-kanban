@@ -1,13 +1,13 @@
 import Column from "../Column/Column";
 import { statusList } from "../../data.js";
-import { cardList } from "../../data.js";
-
+import { Container } from "../Header/Header.styled.js";
+import { MainBLock, MainContet, MainMain } from "./Main.styled.js";
 export default function Main({ cards }) {
   return (
-    <main className="main">
-      <div className="container">
-        <div className="main__block">
-          <div className="main__content">
+    <MainMain>
+      <Container>
+        <MainBLock>
+          <MainContet>
             {statusList.map((status) => (
               <Column
                 key={status}
@@ -15,10 +15,9 @@ export default function Main({ cards }) {
                 cardList={cards.filter((card) => card.status === status)}
               />
             ))}
-          </div>
-        </div>
-      </div>
-    </main>
+          </MainContet>
+        </MainBLock>
+      </Container>
+    </MainMain>
   );
 }
-// Проверка отправки

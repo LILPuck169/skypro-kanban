@@ -1,24 +1,37 @@
+import {
+  CardBtn,
+  CardBtnDiv,
+  CardContent,
+  CardDate,
+  CardGroup,
+  CardTheme,
+  CardTitle,
+  CardsCard,
+  CardsItem,
+  ThemeP,
+} from "./Card.styled.js";
 const Card = ({ title, date, theme, description }) => {
   return (
-    <div className="cards__item">
-      <div className="cards__card card">
-        <div className="card__group">
-          <div className={`card__theme _${theme}`}>
-            <p className={`_${theme}`}>{description}</p>
-          </div>
+    <CardsItem>
+      <CardsCard className="cards__card card">
+        <CardGroup>
+          {console.log(theme)}
+          <CardTheme $themeColor={theme}>
+            <ThemeP>{description}</ThemeP>
+          </CardTheme>
           <a href="#popBrowse" target="_self">
-            <div className="card__btn">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+            <CardBtn>
+              <CardBtnDiv></CardBtnDiv>
+              <CardBtnDiv></CardBtnDiv>
+              <CardBtnDiv></CardBtnDiv>
+            </CardBtn>
           </a>
-        </div>
-        <div className="card__content">
+        </CardGroup>
+        <CardContent>
           <a href="" target="_blank">
-            <h3 className="card__title">{title}</h3>
+            <CardTitle>{title}</CardTitle>
           </a>
-          <div className="card__date">
+          <CardDate>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="13"
@@ -48,10 +61,10 @@ const Card = ({ title, date, theme, description }) => {
               </defs>
             </svg>
             <p>{date}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+          </CardDate>
+        </CardContent>
+      </CardsCard>
+    </CardsItem>
   );
 };
 

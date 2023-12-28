@@ -1,14 +1,15 @@
-import Card from "../Card/Card";
-import { cardList } from "../../data.js";
+import Card from "../Card/Card.jsx";
+import { columTitP, ColumnTitle, MainColumn, Cards } from "./Column.styled.js";
 
 export default function Column({ title, cardList }) {
   return (
-    <div className="main__column column">
-      <div className="column__title">
-        <p>{title}</p>
-      </div>
+    <MainColumn>
+      <ColumnTitle>
+        {/* Не работает ColumnTitP */}
+        <columTitP>{title}</columTitP>
+      </ColumnTitle>
 
-      <div className="cards">
+      <Cards>
         {cardList.map((task) => (
           <Card
             key={task.id}
@@ -18,7 +19,7 @@ export default function Column({ title, cardList }) {
             description={task.description}
           />
         ))}
-      </div>
-    </div>
+      </Cards>
+    </MainColumn>
   );
 }
