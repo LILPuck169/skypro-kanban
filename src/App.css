@@ -547,6 +547,8 @@ body {
 }
 
 .pop-browse {
+  /* Нужно включить block что бы увидеть что работает */
+  display: block;
   display: none;
   width: 100%;
   height: 100%;

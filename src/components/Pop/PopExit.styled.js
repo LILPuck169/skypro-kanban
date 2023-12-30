@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const PopExitExit = styled.div`
-  display: none;
+  /* Нужно включить block что бы увидеть что работает */
+  display: block;
+  /* display: none; */
   width: 100%;
   height: 100%;
   min-width: 320px;

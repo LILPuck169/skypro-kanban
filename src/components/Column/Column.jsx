@@ -1,12 +1,12 @@
 import Card from "../Card/Card.jsx";
-import { columTitP, ColumnTitle, MainColumn, Cards } from "./Column.styled.js";
+import { ColumTitP, ColumnTitle, MainColumn, Cards } from "./Column.styled.js";
 
 export default function Column({ title, cardList }) {
   return (
     <MainColumn>
       <ColumnTitle>
         {/* Не работает ColumnTitP */}
-        <columTitP>{title}</columTitP>
+        <ColumTitP>{title}</ColumTitP>
       </ColumnTitle>
 
       <Cards>

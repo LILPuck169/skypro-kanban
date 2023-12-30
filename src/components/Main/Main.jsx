@@ -2,6 +2,7 @@ import Column from "../Column/Column";
 import { statusList } from "../../data.js";
 import { Container } from "../Header/Header.styled.js";
 import { MainBLock, MainContet, MainMain } from "./Main.styled.js";
+
 export default function Main({ cards }) {
   return (
     <MainMain>
