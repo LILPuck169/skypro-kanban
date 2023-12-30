@@ -1,4 +1,4 @@
-const AppRoutes = {
+export const AppRoutes = {
   MAIN: "/",
   NOTFOUND: "*",
   POPEXIT: "/popexit",

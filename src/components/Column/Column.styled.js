@@ -11,7 +11,7 @@ export const ColumnTitle = styled.div`
   margin: 15px 0;
 `;
 
-export const columTitP = styled.p`
+export const ColumTitP = styled.p`
   color: #94a6be;
   font-size: 14px;
   font-weight: 600;

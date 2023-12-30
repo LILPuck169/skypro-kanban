@@ -1,3 +1,5 @@
+import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
+import { Link } from "react-router-dom";
 export default function Login() {
   return (
     <div className="wrapper">
@@ -23,11 +25,11 @@ export default function Login() {
                 placeholder="Пароль"
               />
               <button className="modal__btn-enter _hover01" id="btnEnter">
-                <a href="../main.html">Войти</a>
+                <Link to={AppRoutes.MAIN}>Войти</Link>
               </button>
               <div className="modal__form-group">
                 <p>Нужно зарегистрироваться?</p>
-                <a href="signup.html">Регистрируйтесь здесь</a>
+                <Link to={AppRoutes.REGISTRATION}>Регистрируйтесь здесь</Link>
               </div>
             </form>
           </div>
