@@ -6,7 +6,7 @@ import Regist from "./pages/Registration/Registration.jsx";
 import PopEx from "./pages/PopExit/Exit.jsx";
 import PopBrow from "./pages/PopBrowse/PopBrowse.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.js";
-function App() {
+export function App() {
   const isAuth = true;
   return (
     <Routes>
@@ -31,5 +31,3 @@ function App() {
     </Routes>
   );
 }
-
-export default App;
