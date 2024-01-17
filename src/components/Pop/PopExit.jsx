@@ -32,7 +32,9 @@ export default function PopExit() {
                 </Link>
               </PopExitExitYes>
               <PopExitExitNo id="exitNo">
-                <PopExitExitNoA href="main.html">Нет, остаться</PopExitExitNoA>{" "}
+                <PopExitExitNoA>
+                  <Link to={AppRoutes.MAIN}>Нет, остаться</Link>
+                </PopExitExitNoA>
               </PopExitExitNo>
             </PopExitFormGroup>
           </form>

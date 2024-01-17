@@ -23,7 +23,7 @@ function App() {
     };
     setCards([...cards, newCard]);
   }
-
+  //Тут загрузку лоада
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
