@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Container,
   HeaderBlock,
@@ -63,7 +63,8 @@ export default function Header({ addCard }) {
                   >
                     Выйти!
                   </NavLink> */}
-                  <a href="#popExit">Выйти</a>
+                  {/* <a href="#popExit">Выйти</a> */}
+                  <Link to={AppRoutes.POPEXIT}>Выйти</Link>
                 </button>
               </div>
             )}

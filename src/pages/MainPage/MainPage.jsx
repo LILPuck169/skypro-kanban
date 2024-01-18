@@ -7,6 +7,7 @@ import Header from "../../components/Header/Header.jsx";
 import Main from "../../components/Main/Main.jsx";
 import { useState, useEffect } from "react";
 import { cardList } from "../../data.js";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [cards, setCards] = useState(cardList);
@@ -32,9 +33,10 @@ function App() {
   return (
     <>
       <Wrapper>
-        <PopExit />
-        <PopNewCard />
-        <PopBrowse />
+        <Outlet />
+        {/* <PopExit /> */}
+        {/* <PopNewCard /> */}
+        {/* <PopBrowse /> */}
         <Header addCard={addCard} />
         {isLoading ? (
           <div className="loader">
