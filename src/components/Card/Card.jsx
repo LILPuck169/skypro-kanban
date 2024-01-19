@@ -1,3 +1,4 @@
+import { AppRoutes } from "../../pages/RouteObjects/RouteObjects.js";
 import {
   CardBtn,
   CardBtnDiv,
@@ -10,6 +11,7 @@ import {
   CardsItem,
   ThemeP,
 } from "./Card.styled.js";
+import { Link } from "react-router-dom";
 const Card = ({ title, date, theme, description }) => {
   return (
     <CardsItem>
@@ -19,18 +21,17 @@ const Card = ({ title, date, theme, description }) => {
           <CardTheme $themeColor={theme}>
             <ThemeP>{description}</ThemeP>
           </CardTheme>
-          <a href="#popBrowse" target="_self">
+          {/* PopBrowse */}
+          <Link to={AppRoutes.POPBROWSE}>
             <CardBtn>
               <CardBtnDiv></CardBtnDiv>
               <CardBtnDiv></CardBtnDiv>
               <CardBtnDiv></CardBtnDiv>
             </CardBtn>
-          </a>
+          </Link>
         </CardGroup>
         <CardContent>
-          <a href="" target="_blank">
-            <CardTitle>{title}</CardTitle>
-          </a>
+          <CardTitle>{title}</CardTitle>
           <CardDate>
             <svg
               xmlns="http://www.w3.org/2000/svg"

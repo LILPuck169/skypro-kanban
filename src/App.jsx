@@ -1,54 +1,25 @@
-import { GlobalStyle } from "./components/GlobalStyle.js";
-import { BrowserRouter } from "react-router-dom";
-import "./App.css";
-import Wrapper from "./components/Wrapper/Wrapper.jsx";
-import PopExit from "./components/Pop/PopExit.jsx";
-import PopNewCard from "./components/Pop/PopNewCard.jsx";
-import PopBrowse from "./components/Pop/PopBrowse.jsx";
-import Header from "./components/Header/Header.jsx";
-import Main from "./components/Main/Main.jsx";
-import { useState, useEffect } from "react";
-import { cardList } from "./data.js";
-
-function App() {
-  const [cards, setCards] = useState(cardList);
-  const [isLoading, setIsLoading] = useState(true);
-
-  function addCard() {
-    const newCard = {
-      id: cards.length + 1,
-      title: "Название задачи ",
-      date: "30.10.2023",
-      theme: "green",
-      description: "Research",
-      status: "Без статуса",
-    };
-    setCards([...cards, newCard]);
-  }
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 5000);
-  }, []);
+import { Routes, Route } from "react-router-dom";
+import { AppRoutes } from "./pages/RouteObjects/RouteObjects.js";
+import MainPage from "./pages/MainPage/MainPage.jsx";
+import Log from "./pages/Login/Login.jsx";
+import Regist from "./pages/Registration/Registration.jsx";
+import PopEx from "./pages/PopExit/Exit.jsx";
+import PopBrow from "./pages/PopBrowse/PopBrowse.jsx";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
+import NotFound from "./pages/NotFound/NotFoundPage.jsx";
+export function App() {
+  const isAuth = true;
   return (
-    <>
-      <Wrapper>
-        <PopExit />
-        <PopNewCard />
-        <PopBrowse />
-        <Header addCard={addCard} />
-        {isLoading ? (
-          <div className="loader">
-            <img src="https://cojo.ru/wp-content/uploads/2022/12/izobrazhenie-zagruzhaetsia-1.webp" />
-          </div>
-        ) : (
-          <Main cards={cards} />
-        )}
-      </Wrapper>
-      <script src="js/script.js"></script>
-    </>
+    <Routes>
+      <Route element={<PrivateRoute isAuth={isAuth} />}>
+        <Route path={AppRoutes.MAIN} element={<MainPage />} />
+        <Route path={AppRoutes.POPEXIT} element={<PopEx />} />
+        <Route path={AppRoutes.POPBROWSE} element={<PopBrow />} />
+      </Route>
+
+      <Route path={AppRoutes.LOGIN} element={<Log />} />
+      <Route path={AppRoutes.REGISTRATION} element={<Regist />} />
+      <Route path={AppRoutes.NOTFOUND} element={<NotFound />} />
+    </Routes>
   );
 }
-
-export default App;
