@@ -11,6 +11,7 @@ import { useState } from "react";
 import { loginKanban } from "./Api.js";
 
 export function App() {
+  
   const navigate = useNavigate();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   async function setAuth(loginData) {

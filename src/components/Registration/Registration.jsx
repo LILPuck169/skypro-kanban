@@ -1,14 +1,15 @@
 import { useState } from "react";
 
 export default function Registration() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`Name: ${name}, Email: ${email}, Password: ${password}`);
-  };
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   alert(`Name: ${name}, Email: ${email}, Password: ${password}`);
+  // };
 
   return (
     <div className="wrapper">
