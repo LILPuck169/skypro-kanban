@@ -27,7 +27,7 @@ function App() {
       title: "Название задачи ",
       date: "30.10.2023",
       theme: "green",
-      description: "Research",
+      topic: "Research",
       status: "Без статуса",
     };
     await postKanban(newCard);

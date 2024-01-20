@@ -12,14 +12,15 @@ import {
   ThemeP,
 } from "./Card.styled.js";
 import { Link } from "react-router-dom";
-const Card = ({ title, date, theme, description }) => {
+const Card = ({ title, date, theme, description, topic }) => {
+  
   return (
     <CardsItem>
       <CardsCard className="cards__card card">
         <CardGroup>
           {console.log(theme)}
           <CardTheme $themeColor={theme}>
-            <ThemeP>{description}</ThemeP>
+            <ThemeP>{topic}</ThemeP>
           </CardTheme>
           {/* PopBrowse */}
           <Link to={AppRoutes.POPBROWSE}>

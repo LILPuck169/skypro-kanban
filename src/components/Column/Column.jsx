@@ -15,11 +15,12 @@ export default function Column({ title, cardList }) {
             key={task._id}
             title={task.title}
             date={task.date}
-            theme={task.theme}
-            description={task.description}
+            topic={task.topic}
+            // description={task.description}
           />
         ))}
       </Cards>
+      
     </MainColumn>
   );
 }

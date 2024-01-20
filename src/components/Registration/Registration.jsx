@@ -1,4 +1,15 @@
+import { useState } from "react";
+
 export default function Registration() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`Name: ${name}, Email: ${email}, Password: ${password}`);
+  };
+
   return (
     <div className="wrapper">
       <div className="container-signup">
@@ -29,7 +40,10 @@ export default function Registration() {
                 id="passwordFirst"
                 placeholder="Пароль"
               />
-              <button className="modal__btn-signup-ent _hover01" id="SignUpEnter">
+              <button
+                className="modal__btn-signup-ent _hover01"
+                id="SignUpEnter"
+              >
                 <a href="../main.html">Зарегистрироваться</a>
               </button>
               <div className="modal__form-group">
