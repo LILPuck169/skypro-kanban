@@ -1,15 +1,34 @@
 import { useState } from "react";
+import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
+import { Link } from "react-router-dom";
 
-export default function Registration() {
+export default function Registration({ register }) {
+  const [registrationData, setRegistrationData] = useState({
+    login: "",
+    name: "",
+    password: "",
+  });
 
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  function onLoginChange(event) {
+    setRegistrationData({
+      ...registrationData,
+      login: event.target.value,
+    });
+  }
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   alert(`Name: ${name}, Email: ${email}, Password: ${password}`);
-  // };
+  function onNameChange(event) {
+    setRegistrationData({
+      ...registrationData,
+      name: event.target.value,
+    });
+  }
+
+  function onPasswordChange(event) {
+    setRegistrationData({
+      ...registrationData,
+      password: event.target.value,
+    });
+  }
 
   return (
     <div className="wrapper">
@@ -26,6 +45,8 @@ export default function Registration() {
                 name="first-name"
                 id="first-name"
                 placeholder="Имя"
+                value={registrationData.name}
+                onChange={onNameChange}
               />
               <input
                 className="modal__input login"
@@ -33,6 +54,8 @@ export default function Registration() {
                 name="login"
                 id="loginReg"
                 placeholder="Эл. почта"
+                value={registrationData.login}
+                onChange={onLoginChange}
               />
               <input
                 className="modal__input password-first"
@@ -40,16 +63,22 @@ export default function Registration() {
                 name="password"
                 id="passwordFirst"
                 placeholder="Пароль"
+                value={registrationData.password}
+                onChange={onPasswordChange}
               />
               <button
                 className="modal__btn-signup-ent _hover01"
                 id="SignUpEnter"
+                onClick={(event) => {
+                  event.preventDefault();
+                  register(registrationData);
+                }}
               >
-                <a href="../main.html">Зарегистрироваться</a>
+                Зарегистрироваться
               </button>
               <div className="modal__form-group">
                 <p>
-                  Уже есть аккаунт? <a href="signin.html">Войдите здесь</a>
+                  Есть аккаунт? <Link to={AppRoutes.LOGIN}>Войдите здесь</Link>
                 </p>
               </div>
             </form>

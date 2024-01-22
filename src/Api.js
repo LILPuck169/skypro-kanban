@@ -7,16 +7,17 @@ const API_URL_USER = "https://wedev-api.sky.pro/api/user";
 export async function getKanban() {
   const userData = JSON.parse(localStorage.getItem("user"));
   token = userData.token;
-  try {
-    const response = await fetch(API_URL, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+
+  const response = await fetch(API_URL, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (response.status !== 200) {
+    throw new Error("Нет авторизации");
+  } else {
     const data = await response.json();
     return data;
-  } catch (error) {
-    alert(error.mesage);
   }
 }
 
@@ -31,12 +32,12 @@ export async function postKanban(text) {
     }),
   });
 
-  if (!response.ok) {
-    throw new Error("Ошибка сервера");
+  if (response.status !== 201) {
+    throw new Error("Нет авторизации");
+  } else {
+    const data = await response.json();
+    return data;
   }
-
-  const data = await response.json();
-  return data;
 }
 
 export async function loginKanban({ login, password }) {
@@ -47,12 +48,17 @@ export async function loginKanban({ login, password }) {
       password,
     }),
   });
-  const data = await response.json();
-  return data;
+
+  if (response.status === 400) {
+    throw new Error("Нет авторизации");
+  } else {
+    const data = await response.json();
+    return data;
+  }
 }
 
-export async function registrationKanban({ login, name, password }) {
-  const response = fetch(API_URL_USER, {
+export async function registerKanban({ login, name, password }) {
+  const response = await fetch(API_URL_USER, {
     method: "POST",
     body: JSON.stringify({
       login,
@@ -60,6 +66,10 @@ export async function registrationKanban({ login, name, password }) {
       password,
     }),
   });
-  const data = await response.json();
-  return data;
+  if (response.status === 400) {
+    throw new Error("Нет авторизации");
+  } else {
+    const data = await response.json();
+    return data;
+  }
 }

@@ -8,14 +8,21 @@ import PopBrow from "./pages/PopBrowse/PopBrowse.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
 import NotFound from "./pages/NotFound/NotFoundPage.jsx";
 import { useState } from "react";
-import { loginKanban } from "./Api.js";
+import { loginKanban, registerKanban } from "./Api.js";
 
 export function App() {
-  
   const navigate = useNavigate();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
   async function setAuth(loginData) {
     await loginKanban(loginData).then((data) => {
+      localStorage.setItem("user", JSON.stringify(data.user));
+      setUser(JSON.parse(localStorage.getItem("user")));
+      navigate(AppRoutes.MAIN);
+    });
+  }
+
+  async function register(registrationData) {
+    await registerKanban(registrationData).then((data) => {
       localStorage.setItem("user", JSON.stringify(data.user));
       setUser(JSON.parse(localStorage.getItem("user")));
       navigate(AppRoutes.MAIN);
@@ -38,7 +45,10 @@ export function App() {
       </Route>
 
       <Route path={AppRoutes.LOGIN} element={<Log setAuth={setAuth} />} />
-      <Route path={AppRoutes.REGISTRATION} element={<Regist />} />
+      <Route
+        path={AppRoutes.REGISTRATION}
+        element={<Regist register={register} />}
+      />
       <Route path={AppRoutes.NOTFOUND} element={<NotFound />} />
     </Routes>
   );

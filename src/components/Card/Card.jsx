@@ -1,4 +1,5 @@
 import { AppRoutes } from "../../pages/RouteObjects/RouteObjects.js";
+import { format } from "date-fns";
 import {
   CardBtn,
   CardBtnDiv,
@@ -13,7 +14,7 @@ import {
 } from "./Card.styled.js";
 import { Link } from "react-router-dom";
 const Card = ({ title, date, theme, description, topic }) => {
-  // const formattedDate = format(new Date(date), "yyyy-MM-dd hh.mm.ss");
+  const formattedDate = format(date, "dd.MM.yy");
   // const formattedDate = new Date(date).toLocaleDateString();
   return (
     <CardsItem>
@@ -63,8 +64,8 @@ const Card = ({ title, date, theme, description, topic }) => {
                 </clipPath>
               </defs>
             </svg>
-            <p>{date}</p>
-            {/* <p>{formattedDate}</p> */}
+            {/* <p>{date}</p> */}
+            <p>{formattedDate}</p>
           </CardDate>
         </CardContent>
       </CardsCard>
