@@ -8,28 +8,39 @@ import Main from "../../components/Main/Main.jsx";
 import { useState, useEffect } from "react";
 import { cardList } from "../../data.js";
 import { Outlet } from "react-router-dom";
+import { getKanban, postKanban } from "../../Api.js";
 
 function App() {
   const [cards, setCards] = useState(cardList);
   const [isLoading, setIsLoading] = useState(true);
 
-  function addCard() {
+  useEffect(() => {
+    getKanban().then((data) => {
+      setCards(data.tasks);
+      setIsLoading(false);
+    });
+  }, []);
+
+  async function addCard() {
     const newCard = {
       id: cards.length + 1,
       title: "Название задачи ",
       date: "30.10.2023",
       theme: "green",
-      description: "Research",
+      topic: "Research",
       status: "Без статуса",
     };
+    await postKanban(newCard);
     setCards([...cards, newCard]);
   }
-  //Тут загрузку лоада
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  }, []);
+
+  // //Тут загрузку лоада
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 500);
+  // }, []);
+
   return (
     <>
       <Wrapper>

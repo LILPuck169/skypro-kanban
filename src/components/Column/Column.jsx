@@ -12,14 +12,15 @@ export default function Column({ title, cardList }) {
       <Cards>
         {cardList.map((task) => (
           <Card
-            key={task.id}
+            key={task._id}
             title={task.title}
             date={task.date}
-            theme={task.theme}
-            description={task.description}
+            topic={task.topic}
+            // description={task.description}
           />
         ))}
       </Cards>
+      
     </MainColumn>
   );
 }
