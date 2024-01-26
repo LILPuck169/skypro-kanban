@@ -13,6 +13,7 @@ import { loginKanban, registerKanban } from "./Api.js";
 export function App() {
   const navigate = useNavigate();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  
   async function setAuth(loginData) {
     await loginKanban(loginData).then((data) => {
       localStorage.setItem("user", JSON.stringify(data.user));
