@@ -72,3 +72,19 @@ export async function registerKanban({ login, name, password }) {
     return data;
   }
 }
+
+export async function deleteKanban(id) {
+  const response = await fetch(API_URL + "/" + id, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    method: "DELETE",
+  });
+
+  if (response.status !== 204) {
+    throw new Error("Ошибка удаления задачи");
+  } else {
+    const data = await response.json();
+    return data;
+  }
+}

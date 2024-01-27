@@ -16,11 +16,11 @@ export default function Column({ title, cardList }) {
             title={task.title}
             date={task.date}
             topic={task.topic}
+            id={task._id}
             // description={task.description}
           />
         ))}
       </Cards>
-      
     </MainColumn>
   );
 }

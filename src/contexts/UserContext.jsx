@@ -27,8 +27,4 @@ export function UserProvider({ children }) {
   );
 }
 
-//   const user = useContext(UserContext);
-//   if (!user) {
-//     throw new Error("Данные пользователя не были найдены");
-//   }
-//   return user;
+

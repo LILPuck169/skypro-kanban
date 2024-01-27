@@ -27,41 +27,35 @@ export default function Header() {
             </a>
           </div>
 
-          <Link to={AppRoutes.ADD_CARD}>
-            <HeaderNav>
-              <button className="header__btn-main-new _hover01" id="btnMainNew">
-                <a>Создать новую задачу</a>
-              </button>
-              <a
-                onClick={toggkeDropdown}
-                href="#user-set-target"
-                className="header__user _hover02"
+          <HeaderNav>
+            <button className="header__btn-main-new _hover01" id="btnMainNew">
+              <Link to={AppRoutes.ADD_CARD}>Создать новую задачу</Link>
+            </button>
+            <a
+              onClick={toggkeDropdown}
+              href="#user-set-target"
+              className="header__user _hover02"
+            >
+              YarOlshankiy
+            </a>
+            {isOpen && (
+              <div
+                className="header__pop-user-set pop-user-set"
+                id="user-set-target"
               >
-                YarOlshankiy
-              </a>
-              {isOpen && (
-                <div
-                  className="header__pop-user-set pop-user-set"
-                  id="user-set-target"
-                >
-                  <a href="">#</a>
-                  <p className="pop-user-set__name">Yaroslav Olshanskiy</p>
-                  <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                  <div className="pop-user-set__theme">
-                    <p>Темная тема</p>
-                    <input
-                      type="checkbox"
-                      className="checkbox"
-                      name="checkbox"
-                    />
-                  </div>
-                  <button type="button" className="_hover03">
-                    <Link to={AppRoutes.POPEXIT}>Выйти</Link>
-                  </button>
+                <a href="">#</a>
+                <p className="pop-user-set__name">Yaroslav Olshanskiy</p>
+                <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
+                <div className="pop-user-set__theme">
+                  <p>Темная тема</p>
+                  <input type="checkbox" className="checkbox" name="checkbox" />
                 </div>
-              )}
-            </HeaderNav>
-          </Link>
+                <button type="button" className="_hover03">
+                  <Link to={AppRoutes.POPEXIT}>Выйти</Link>
+                </button>
+              </div>
+            )}
+          </HeaderNav>
         </HeaderBlock>
       </Container>
     </HeaderStyle>
