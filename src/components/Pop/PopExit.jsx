@@ -11,8 +11,10 @@ import {
   PopExitFormGroup,
   PopExitTtl,
 } from "./PopExit.styled";
+import useUser from "../../hooks/useUser";
 
-export default function PopExit({ exit }) {
+export default function PopExit() {
+  const { logout } = useUser();
   return (
     <PopExitExit id="popExit">
       <PopExitContainer>
@@ -27,7 +29,7 @@ export default function PopExit({ exit }) {
                 id="exitYes"
                 onClick={(event) => {
                   event.preventDefault();
-                  exit();
+                  logout();
                 }}
               >
                 Да, выйди от сюда

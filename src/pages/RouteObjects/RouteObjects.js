@@ -1,5 +1,3 @@
-
-
 export const AppRoutes = {
   MAIN: "/",
   NOTFOUND: "*",
@@ -7,4 +5,5 @@ export const AppRoutes = {
   POPBROWSE: "/card/:cardId",
   REGISTRATION: "/registration",
   LOGIN: "/login",
+  ADD_CARD: "/add-card",
 };
