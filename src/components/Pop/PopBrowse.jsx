@@ -8,6 +8,7 @@ export default function PopBrowse({ id }) {
   // const { tasks, updateTask } = useTasks();
   const { tasks, updateTask } = useTasks();
   console.log(tasks);
+  
   async function deleteFunc() {
     try {
       await deleteKanban(id);

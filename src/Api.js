@@ -81,8 +81,28 @@ export async function deleteKanban(id) {
     method: "DELETE",
   });
 
-  if (response.status !== 204) {
+  if (response.status !== 201) {
     throw new Error("Ошибка удаления задачи");
+  } else {
+    const data = await response.json();
+    return data;
+  }
+}
+
+export async function addTask({ title, topic, description }) {
+  const response = await fetch(API_URL, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    method: "POST",
+    body: JSON.stringify({
+      title,
+      topic,
+      description,
+    }),
+  });
+  if (response.status !== 201) {
+    throw new Error("Ошибка при добавлении задачи");
   } else {
     const data = await response.json();
     return data;

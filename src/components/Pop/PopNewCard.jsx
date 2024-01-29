@@ -10,12 +10,25 @@ export default function PopNewCard() {
     topic: "",
     description: "",
   });
-  function onButtonSubmit() {
-    const cardData = {
-      ...newCard,
-      data: selected,
-    };
+
+  async function onButtonSubmit() {
+    try {
+      const newTask = await addTask(title, topic, description);
+      console.log("Задача успешно добавлена:", newTask);
+      const updatedTasks = [...tasks, newCard];
+      updateTask(updatedTasks);
+    } catch (error) {
+      console.error("Ошибка при добавлении задачи:", error);
+      alert(error.message);
+    }
   }
+
+  //  function onButtonSubmit() {
+  //    const cardData = {
+  //      ...newCard,
+  //      data: selected,
+  //    };
+  //  }
 
   return (
     <div className="pop-new-card" id="popNewCard">
