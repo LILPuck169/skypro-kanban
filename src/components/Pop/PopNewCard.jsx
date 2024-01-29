@@ -4,7 +4,7 @@ import Calendar from "../Calendar/Calendar";
 import React, { useState } from "react";
 import { addTask } from "../../Api";
 
-export default function PopNewCard() {
+export default function PopNewCard({ title, topic, description }) {
   const [selected, setSelected] = React.useState(null);
   const [newCard, setNewCard] = useState({
     title: "",
@@ -14,7 +14,7 @@ export default function PopNewCard() {
 
   async function onButtonSubmit() {
     try {
-      const newTask = await addTask({ title, topic, description });
+      const newTask = await addTask(title, topic, description);
       console.log("Задача успешно добавлена:", newTask);
       const updatedTasks = [...tasks, newCard];
       updateTask(updatedTasks);
