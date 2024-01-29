@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
 import Calendar from "../Calendar/Calendar";
 import React, { useState } from "react";
+import { addTask } from "../../Api";
 
 export default function PopNewCard() {
   const [selected, setSelected] = React.useState(null);
@@ -13,7 +14,7 @@ export default function PopNewCard() {
 
   async function onButtonSubmit() {
     try {
-      const newTask = await addTask(title, topic, description);
+      const newTask = await addTask({ title, topic, description });
       console.log("Задача успешно добавлена:", newTask);
       const updatedTasks = [...tasks, newCard];
       updateTask(updatedTasks);
