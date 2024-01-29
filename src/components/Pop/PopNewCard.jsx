@@ -12,24 +12,46 @@ export default function PopNewCard({ title, topic, description }) {
     description: "",
   });
 
+  // function onButtonSubmit() {
+  //   const cardData = {
+  //     ...newCard,
+  //     data: selected,
+  //   };
+  // }
   async function onButtonSubmit() {
+    const cardData = {
+      ...newCard,
+      data: selected,
+    };
+
     try {
-      const newTask = await addTask(title, topic, description);
-      console.log("Задача успешно добавлена:", newTask);
-      const updatedTasks = [...tasks, newCard];
-      updateTask(updatedTasks);
+      const responseData = await addTask(cardData);
+      console.log("Task added successfully:", responseData);
+      // Дополнительный код после успешного добавления задачи
     } catch (error) {
       console.error("Ошибка при добавлении задачи:", error);
-      alert(error.message);
+      // Дополнительный код обработки ошибки
     }
   }
 
-  //  function onButtonSubmit() {
-  //    const cardData = {
-  //      ...newCard,
-  //      data: selected,
-  //    };
-  //  }
+  // async function onButtonSubmit() {
+  //   try {
+  //     const newTask = await addTask({ title, topic, description });
+  //     console.log("Задача успешно добавлена:", newTask);
+  //     const updatedTasks = [...tasks, newCard];
+  //     setTasks(updatedTasks);
+  //   } catch (error) {
+  //     console.error("Ошибка при добавлении задачи:", error);
+  //     alert(error.message);
+  //   }
+  // }
+
+  // function onButtonSubmit() {
+  //   const cardData = {
+  //     ...newCard,
+  //     data: selected,
+  //   };
+  // }
 
   return (
     <div className="pop-new-card" id="popNewCard">
