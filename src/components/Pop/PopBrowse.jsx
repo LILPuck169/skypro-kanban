@@ -2,11 +2,11 @@ import { useParams } from "react-router-dom";
 import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
 import { Link } from "react-router-dom";
 import { deleteKanban } from "../../Api";
-import uuuseTasks from "../../hooks/uuuseTasks.jsx";
+import useTasks from "../../hooks/useTasks.jsx";
 
 export default function PopBrowse({ id }) {
   // const { tasks, updateTask } = useTasks();
-  const { tasks, updateTask } = uuuseTasks();
+  const { tasks, updateTask } = useTasks();
   console.log(tasks);
   async function deleteFunc() {
     try {

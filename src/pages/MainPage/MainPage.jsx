@@ -5,7 +5,7 @@ import Main from "../../components/Main/Main.jsx";
 import { useState, useEffect } from "react";
 import { cardList } from "../../data.js";
 import { Outlet } from "react-router-dom";
-import { getKanban, postKanban } from "../../Api.js";
+import { getKanban } from "../../Api.js";
 import useUser from "../../hooks/useUser.jsx";
 
 function App() {
@@ -13,10 +13,14 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useUser();
   useEffect(() => {
-    getKanban({ user }).then((data) => {
-      setCards(data.tasks);
-      setIsLoading(false);
-    });
+    getKanban({ user })
+      .then((data) => {
+        setCards(data.tasks);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
   }, [user]);
 
   return (
