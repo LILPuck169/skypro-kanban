@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
 import Calendar from "../Calendar/Calendar";
 import React, { useState } from "react";
 import { addTask } from "../../Api";
 
 export default function PopNewCard({ title, topic, description }) {
+  const navigate = useNavigate();
   const [selected, setSelected] = React.useState(null);
   const [newCard, setNewCard] = useState({
     title: "",
@@ -12,12 +13,6 @@ export default function PopNewCard({ title, topic, description }) {
     description: "",
   });
 
-  // function onButtonSubmit() {
-  //   const cardData = {
-  //     ...newCard,
-  //     data: selected,
-  //   };
-  // }
   async function onButtonSubmit() {
     const cardData = {
       ...newCard,
@@ -25,33 +20,15 @@ export default function PopNewCard({ title, topic, description }) {
     };
 
     try {
-      const responseData = await addTask(cardData);
+      const responseData = await addTask(cardData).then((data) => {
+        setNewCard(data);
+        navigate(AppRoutes.MAIN);
+      });
       console.log("Task added successfully:", responseData);
-      // Дополнительный код после успешного добавления задачи
     } catch (error) {
       console.error("Ошибка при добавлении задачи:", error);
-      // Дополнительный код обработки ошибки
     }
   }
-
-  // async function onButtonSubmit() {
-  //   try {
-  //     const newTask = await addTask({ title, topic, description });
-  //     console.log("Задача успешно добавлена:", newTask);
-  //     const updatedTasks = [...tasks, newCard];
-  //     setTasks(updatedTasks);
-  //   } catch (error) {
-  //     console.error("Ошибка при добавлении задачи:", error);
-  //     alert(error.message);
-  //   }
-  // }
-
-  // function onButtonSubmit() {
-  //   const cardData = {
-  //     ...newCard,
-  //     data: selected,
-  //   };
-  // }
 
   return (
     <div className="pop-new-card" id="popNewCard">
