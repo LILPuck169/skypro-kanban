@@ -1,24 +1,41 @@
 import { useParams } from "react-router-dom";
 import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
 import { Link } from "react-router-dom";
-import { deleteKanban } from "../../Api";
+import { API_URL, deleteKanban, token } from "../../Api";
 import useTasks from "../../hooks/useTasks.jsx";
 
 export default function PopBrowse({ id }) {
   // const { tasks, updateTask } = useTasks();
   const { tasks, updateTask } = useTasks();
   console.log(tasks);
-  
+
+  // async function deleteFunc() {
+  //   try {
+  //     await deleteKanban(id);
+  //     const newtasks = tasks.filter((task) => task._id !== id);
+  //     console.log(id);
+  //     updateTask(newtasks);
+  //   } catch (error) {
+  //     alert(error.message);
+  //   }
+  // }
+
   async function deleteFunc() {
     try {
       await deleteKanban(id);
-      const newtasks = tasks.filter((task) => task._id !== id);
-      console.log(id);
-      updateTask(newtasks);
+      const response = await fetch(API_URL, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        method: "GET",
+      });
+      const data = await response.json();
+      updateTask(data);
     } catch (error) {
       alert(error.message);
     }
   }
+
   return (
     <div className="pop-browse" id="popBrowse">
       <div className="pop-browse__container">
