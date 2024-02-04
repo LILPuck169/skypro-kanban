@@ -1,12 +1,25 @@
 import { useState } from "react";
 import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
 import { Link } from "react-router-dom";
+import { loginKanban } from "../../Api";
+import useUser from "../../hooks/useUser";
 
-export default function Login({ setAuth }) {
+export default function Login() {
+  const { login } = useUser();
   const [loginData, setLoginData] = useState({
     login: "",
     password: "",
   });
+
+  function setAuth(loginData) {
+    loginKanban(loginData)
+      .then((data) => {
+        login(data.user);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
 
   function onLoginChange(event) {
     setLoginData({

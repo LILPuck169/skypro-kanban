@@ -8,7 +8,7 @@ import {
 } from "./Header.styled";
 import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
 
-export default function Header({ addCard }) {
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const toggkeDropdown = () => setIsOpen((prevState) => !prevState);
 
@@ -16,7 +16,6 @@ export default function Header({ addCard }) {
     <HeaderStyle>
       <Container>
         <HeaderBlock>
-          {/* Не понял кого нужно заменять, в CSS Там написанно header__logo img */}
           <div className="header__logo _show _light">
             <a href="" target="_self">
               <img src="public/logo.png" alt="logo" />
@@ -29,11 +28,8 @@ export default function Header({ addCard }) {
           </div>
 
           <HeaderNav>
-            {/* Кнопка по нажатию */}
             <button className="header__btn-main-new _hover01" id="btnMainNew">
-              <a onClick={addCard} href="#">
-                Создать новую задачу
-              </a>
+              <Link to={AppRoutes.ADD_CARD}>Создать новую задачу</Link>
             </button>
             <a
               onClick={toggkeDropdown}
@@ -55,22 +51,10 @@ export default function Header({ addCard }) {
                   <input type="checkbox" className="checkbox" name="checkbox" />
                 </div>
                 <button type="button" className="_hover03">
-                  {/* <NavLink
-                    to={AppRoutes.POPEXIT}
-                    style={({ isActive }) => ({
-                      display: isActive ? "block" : "none",
-                    })}
-                  >
-                    Выйти!
-                  </NavLink> */}
-                  {/* <a href="#popExit">Выйти</a> */}
                   <Link to={AppRoutes.POPEXIT}>Выйти</Link>
                 </button>
               </div>
             )}
-            {/* Моя карточка */}
-
-            {/* Конец моей карточки */}
           </HeaderNav>
         </HeaderBlock>
       </Container>
