@@ -35,7 +35,8 @@ export default function PopBrowse({ id }) {
       alert(error.message);
     }
   }
-
+  //привет
+  //пока
   return (
     <div className="pop-browse" id="popBrowse">
       <div className="pop-browse__container">
