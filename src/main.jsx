@@ -4,17 +4,11 @@ import ReactDOM from "react-dom/client";
 // import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "../src/App.jsx";
-import { UserProvider } from "./contexts/UserContext.jsx";
-import { TaskProvider } from "./contexts/TaskContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <React.StrictMode>
-      <TaskProvider>
-        <UserProvider>
-          <App />
-        </UserProvider>
-      </TaskProvider>
+      <App />
     </React.StrictMode>
   </BrowserRouter>
 );

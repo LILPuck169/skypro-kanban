@@ -13,19 +13,19 @@ import {
   ThemeP,
 } from "./Card.styled.js";
 import { Link } from "react-router-dom";
-const Card = ({ title, date, theme, description, topic, id }) => {
+const Card = ({ title, date, theme, description, topic }) => {
   const formattedDate = format(date, "dd.MM.yy");
   // const formattedDate = new Date(date).toLocaleDateString();
   return (
     <CardsItem>
       <CardsCard className="cards__card card">
         <CardGroup>
+          {console.log(theme)}
           <CardTheme $themeColor={theme}>
             <ThemeP>{topic}</ThemeP>
           </CardTheme>
           {/* PopBrowse */}
-          {/* <Link to={AppRoutes.POPBROWSE}> */}
-          <Link to={`card/${id}`}>
+          <Link to={AppRoutes.POPBROWSE}>
             <CardBtn>
               <CardBtnDiv></CardBtnDiv>
               <CardBtnDiv></CardBtnDiv>
@@ -34,9 +34,7 @@ const Card = ({ title, date, theme, description, topic, id }) => {
           </Link>
         </CardGroup>
         <CardContent>
-          <Link>
-            <CardTitle>{title}</CardTitle>
-          </Link>
+          <CardTitle>{title}</CardTitle>
           <CardDate>
             <svg
               xmlns="http://www.w3.org/2000/svg"

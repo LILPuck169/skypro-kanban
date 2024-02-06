@@ -1,48 +1,16 @@
 import { useParams } from "react-router-dom";
 import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
 import { Link } from "react-router-dom";
-import { API_URL, deleteKanban, token } from "../../Api";
-import useTasks from "../../hooks/useTasks.jsx";
 
-export default function PopBrowse({ id }) {
-  // const { tasks, updateTask } = useTasks();
-  const { tasks, updateTask } = useTasks();
-  console.log(tasks);
-
-  // async function deleteFunc() {
-  //   try {
-  //     await deleteKanban(id);
-  //     const newtasks = tasks.filter((task) => task._id !== id);
-  //     console.log(id);
-  //     updateTask(newtasks);
-  //   } catch (error) {
-  //     alert(error.message);
-  //   }
-  // }
-
-  async function deleteFunc() {
-    try {
-      await deleteKanban(id);
-      const response = await fetch(API_URL, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        method: "GET",
-      });
-      const data = await response.json();
-      updateTask(data);
-    } catch (error) {
-      alert(error.message);
-    }
-  }
-
+export default function PopBrowse() {
+  let { cardId } = useParams();
   return (
     <div className="pop-browse" id="popBrowse">
       <div className="pop-browse__container">
         <div className="pop-browse__block">
           <div className="pop-browse__content">
             <div className="pop-browse__top-block">
-              <h3 className="pop-browse__ttl">Название задачи </h3>
+              <h3 className="pop-browse__ttl">Название задачи {cardId}</h3>
               <div className="categories__theme theme-top _orange _active-category">
                 <p className="_orange">Web Design</p>
               </div>
@@ -200,11 +168,8 @@ export default function PopBrowse({ id }) {
                 <button className="btn-browse__edit _btn-bor _hover03">
                   <a href="#">Редактировать задачу</a>
                 </button>
-                <button
-                  onClick={deleteFunc}
-                  className="btn-browse__delete _btn-bor _hover03"
-                >
-                  Удалить заДдачу!
+                <button className="btn-browse__delete _btn-bor _hover03">
+                  <a href="#">Удалить задачу</a>
                 </button>
               </div>
               <button className="btn-browse__close _btn-bg _hover01">
