@@ -1,24 +1,13 @@
-import { useParams } from "react-router-dom";
 import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
 import { Link } from "react-router-dom";
 import { API_URL, deleteKanban, token } from "../../Api";
 import useTasks from "../../hooks/useTasks.jsx";
 
 export default function PopBrowse({ id }) {
-  // const { tasks, updateTask } = useTasks();
   const { tasks, updateTask } = useTasks();
   console.log(tasks);
 
-  // async function deleteFunc() {
-  //   try {
-  //     await deleteKanban(id);
-  //     const newtasks = tasks.filter((task) => task._id !== id);
-  //     console.log(id);
-  //     updateTask(newtasks);
-  //   } catch (error) {
-  //     alert(error.message);
-  //   }
-  // }
+  const currentTask = tasks?.find((item) => item._id === id);
 
   async function deleteFunc() {
     try {
@@ -35,15 +24,14 @@ export default function PopBrowse({ id }) {
       alert(error.message);
     }
   }
-  //привет
-  //пока
+
   return (
     <div className="pop-browse" id="popBrowse">
       <div className="pop-browse__container">
         <div className="pop-browse__block">
           <div className="pop-browse__content">
             <div className="pop-browse__top-block">
-              <h3 className="pop-browse__ttl">Название задачи </h3>
+              <h3 className="pop-browse__ttl">{currentTask.title} </h3>
               <div className="categories__theme theme-top _orange _active-category">
                 <p className="_orange">Web Design</p>
               </div>
@@ -198,9 +186,11 @@ export default function PopBrowse({ id }) {
             </div>
             <div className="pop-browse__btn-browse ">
               <div className="btn-group">
-                <button className="btn-browse__edit _btn-bor _hover03">
-                  <a href="#">Редактировать задачу</a>
-                </button>
+                <Link to={`/edit/${id}`}>
+                  <button className="btn-browse__edit _btn-bor _hover03">
+                    Редактировать задачу
+                  </button>
+                </Link>
                 <button
                   onClick={deleteFunc}
                   className="btn-browse__delete _btn-bor _hover03"

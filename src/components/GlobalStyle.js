@@ -18,4 +18,15 @@ a:visited {
 }
 ul li {
   list-style: none;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+}
+div,
+button,
+a {
+  font-family: "Roboto", sans-serif;
 }`;

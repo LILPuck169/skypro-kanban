@@ -1,6 +1,19 @@
 import { useState } from "react";
 import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
 import { Link } from "react-router-dom";
+import {
+  ContainerSignup,
+  Modal,
+  ModalBlock,
+  ModalButton,
+  ModalFormGroup,
+  ModalFormLogin,
+  ModalInputLogin,
+  ModalInputName,
+  ModalInputPassword,
+  ModalTitle,
+  Wrapper,
+} from "./Registration.styled";
 
 export default function Registration({ register }) {
   const [registrationData, setRegistrationData] = useState({
@@ -31,16 +44,15 @@ export default function Registration({ register }) {
   }
 
   return (
-    <div className="wrapper">
-      <div className="container-signup">
-        <div className="modal">
-          <div className="modal__block">
-            <div className="modal__ttl">
+    <Wrapper>
+      <ContainerSignup>
+        <Modal>
+          <ModalBlock>
+            <ModalTitle>
               <h2>Регистрация</h2>
-            </div>
-            <form className="modal__form-login" id="formLogUp" action="#">
-              <input
-                className="modal__input first-name"
+            </ModalTitle>
+            <ModalFormLogin id="formLogUp" action="#">
+              <ModalInputName
                 type="text"
                 name="first-name"
                 id="first-name"
@@ -48,8 +60,7 @@ export default function Registration({ register }) {
                 value={registrationData.name}
                 onChange={onNameChange}
               />
-              <input
-                className="modal__input login"
+              <ModalInputLogin
                 type="text"
                 name="login"
                 id="loginReg"
@@ -57,7 +68,7 @@ export default function Registration({ register }) {
                 value={registrationData.login}
                 onChange={onLoginChange}
               />
-              <input
+              <ModalInputPassword
                 className="modal__input password-first"
                 type="password"
                 name="password"
@@ -66,8 +77,7 @@ export default function Registration({ register }) {
                 value={registrationData.password}
                 onChange={onPasswordChange}
               />
-              <button
-                className="modal__btn-signup-ent _hover01"
+              <ModalButton
                 id="SignUpEnter"
                 onClick={(event) => {
                   event.preventDefault();
@@ -75,16 +85,16 @@ export default function Registration({ register }) {
                 }}
               >
                 Зарегистрироваться
-              </button>
-              <div className="modal__form-group">
+              </ModalButton>
+              <ModalFormGroup>
                 <p>
                   Есть аккаунт? <Link to={AppRoutes.LOGIN}>Войдите здесь</Link>
                 </p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+              </ModalFormGroup>
+            </ModalFormLogin>
+          </ModalBlock>
+        </Modal>
+      </ContainerSignup>
+    </Wrapper>
   );
 }

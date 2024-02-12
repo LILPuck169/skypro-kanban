@@ -46,10 +46,6 @@ export default function Header() {
                 <a href="">#</a>
                 <p className="pop-user-set__name">Yaroslav Olshanskiy</p>
                 <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                <div className="pop-user-set__theme">
-                  <p>Темная тема</p>
-                  <input type="checkbox" className="checkbox" name="checkbox" />
-                </div>
                 <button type="button" className="_hover03">
                   <Link to={AppRoutes.POPEXIT}>Выйти</Link>
                 </button>

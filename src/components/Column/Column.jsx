@@ -5,7 +5,6 @@ export default function Column({ title, cardList }) {
   return (
     <MainColumn>
       <ColumnTitle>
-        {/* Не работает ColumnTitP */}
         <ColumTitP>{title}</ColumTitP>
       </ColumnTitle>
 
@@ -17,7 +16,6 @@ export default function Column({ title, cardList }) {
             date={task.date}
             topic={task.topic}
             id={task._id}
-            // description={task.description}
           />
         ))}
       </Cards>

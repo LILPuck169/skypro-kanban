@@ -7,15 +7,17 @@ import { cardList } from "../../data.js";
 import { Outlet } from "react-router-dom";
 import { getKanban } from "../../Api.js";
 import useUser from "../../hooks/useUser.jsx";
+import { LoaderContainer, LoaderGif } from "./MainPage.stuled.js";
+import useTasks from "../../hooks/useTasks.jsx";
 
 function App() {
-  const [cards, setCards] = useState(cardList);
+  const { updateTask, tasks } = useTasks();
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useUser();
   useEffect(() => {
     getKanban({ user })
       .then((data) => {
-        setCards(data.tasks);
+        updateTask(data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -30,11 +32,13 @@ function App() {
 
         <Header />
         {isLoading ? (
-          <div className="loader">
-            <img src="https://cojo.ru/wp-content/uploads/2022/12/izobrazhenie-zagruzhaetsia-1.webp" />
-          </div>
+          <LoaderContainer>
+            <LoaderGif>
+              <img src="https://usagif.com/wp-content/uploads/loading-77.gif" />
+            </LoaderGif>
+          </LoaderContainer>
         ) : (
-          <Main cards={cards} />
+          <Main cards={tasks} />
         )}
       </Wrapper>
       <script src="js/script.js"></script>

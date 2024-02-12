@@ -1,11 +1,11 @@
 import Column from "../Column/Column";
 import { statusList } from "../../data.js";
 import { Container } from "../Header/Header.styled.js";
-import { MainBLock, MainContet, MainMain } from "./Main.styled.js";
+import { MainBLock, MainContet, MainWrapper } from "./Main.styled.js";
 
 export default function Main({ cards }) {
   return (
-    <MainMain>
+    <MainWrapper>
       <Container>
         <MainBLock>
           <MainContet>
@@ -19,6 +19,6 @@ export default function Main({ cards }) {
           </MainContet>
         </MainBLock>
       </Container>
-    </MainMain>
+    </MainWrapper>
   );
 }

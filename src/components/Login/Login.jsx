@@ -3,6 +3,18 @@ import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
 import { Link } from "react-router-dom";
 import { loginKanban } from "../../Api";
 import useUser from "../../hooks/useUser";
+import {
+  ContainerSigIn,
+  Modal,
+  ModalBlock,
+  ModalButton,
+  ModalFormGroup,
+  ModalFormLogin,
+  ModalInputLogin,
+  ModalInputPassword,
+  ModalTtl,
+  Wrapper,
+} from "./Login.styled";
 
 export default function Login() {
   const { login } = useUser();
@@ -36,16 +48,15 @@ export default function Login() {
   }
 
   return (
-    <div className="wrapper">
-      <div className="container-signin">
-        <div className="modal">
-          <div className="modal__block">
-            <div className="modal__ttl">
+    <Wrapper>
+      <ContainerSigIn>
+        <Modal>
+          <ModalBlock>
+            <ModalTtl>
               <h2>Вход</h2>
-            </div>
-            <form className="modal__form-login" id="formLogIn" action="#">
-              <input
-                className="modal__input"
+            </ModalTtl>
+            <ModalFormLogin id="formLogIn" action="#">
+              <ModalInputLogin
                 type="text"
                 name="login"
                 id="formlogin"
@@ -53,8 +64,7 @@ export default function Login() {
                 value={loginData.login}
                 onChange={onLoginChange}
               />
-              <input
-                className="modal__input"
+              <ModalInputPassword
                 type="password"
                 name="password"
                 id="formpassword"
@@ -62,7 +72,7 @@ export default function Login() {
                 value={loginData.password}
                 onChange={onPasswordChange}
               />
-              <button
+              <ModalButton
                 className="modal__btn-enter _hover01"
                 id="btnEnter"
                 onClick={(event) => {
@@ -70,17 +80,16 @@ export default function Login() {
                   setAuth(loginData);
                 }}
               >
-                {/* <Link to={AppRoutes.MAIN}>Войти</Link> */}
                 Войти
-              </button>
-              <div className="modal__form-group">
+              </ModalButton>
+              <ModalFormGroup>
                 <p>Нужно зарегистрироваться?</p>
                 <Link to={AppRoutes.REGISTRATION}>Регистрируйтесь здесь</Link>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+              </ModalFormGroup>
+            </ModalFormLogin>
+          </ModalBlock>
+        </Modal>
+      </ContainerSigIn>
+    </Wrapper>
   );
 }

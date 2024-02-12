@@ -8,15 +8,18 @@ import PopBrow from "./pages/PopBrowse/PopBrowse.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
 import NotFound from "./pages/NotFound/NotFoundPage.jsx";
 import AddCardPage from "./pages/AddCardPages/AddCardPages.jsx";
+import EditTask from "./pages/EditTask/EditTask.jsx";
 
 export function App() {
   return (
     <Routes>
       <Route element={<PrivateRoute />}>
-        <Route path={AppRoutes.MAIN} element={<MainPage />} />
-        <Route path={AppRoutes.POPEXIT} element={<PopEx />} />
-        <Route path={AppRoutes.POPBROWSE} element={<PopBrow />} />
-        <Route path={AppRoutes.ADD_CARD} element={<AddCardPage />} />
+        <Route path={AppRoutes.MAIN} element={<MainPage />}>
+          <Route path={AppRoutes.POPEXIT} element={<PopEx />} />
+          <Route path={AppRoutes.POPBROWSE} element={<PopBrow />} />
+          <Route path={AppRoutes.ADD_CARD} element={<AddCardPage />} />
+          <Route path={AppRoutes.EDIT} element={<EditTask />} />
+        </Route>
       </Route>
 
       <Route path={AppRoutes.LOGIN} element={<Log />} />

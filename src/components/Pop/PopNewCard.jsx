@@ -1,10 +1,10 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../pages/RouteObjects/RouteObjects";
 import Calendar from "../Calendar/Calendar";
 import React, { useState } from "react";
 import { addTask } from "../../Api";
 
-export default function PopNewCard({ title, topic, description }) {
+export default function PopNewCard() {
   const navigate = useNavigate();
   const [selected, setSelected] = React.useState(null);
   const [newCard, setNewCard] = useState({
@@ -36,13 +36,11 @@ export default function PopNewCard({ title, topic, description }) {
         <div className="pop-new-card__block">
           <div className="pop-new-card__content">
             <h3 className="pop-new-card__ttl">Создание задачи</h3>
-            {/* <Link to={AppRoutes.MAIN}>Закрыть </Link> */}
+
             <Link to={AppRoutes.MAIN} className="pop-new-card__close">
               &#10006;
             </Link>
-            {/* <a href="#" className="pop-new-card__close">
-              &#10006;
-            </a> */}
+
             <div className="pop-new-card__wrap">
               <form
                 className="pop-new-card__form form-new"

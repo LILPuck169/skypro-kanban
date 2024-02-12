@@ -1,0 +1,16 @@
+@media screen and (max-width: 375px) {
+  .modal {
+    background-color: #ffffff;
+  }
+  .modal__block {
+    max-width: 368px;
+    width: 100%;
+    padding: 0 16px;
+    border-radius: none;
+    border: none;
+    box-shadow: none;
+  }
+  .modal__btn-signup-ent {
+    height: 40px;
+  }
+}
