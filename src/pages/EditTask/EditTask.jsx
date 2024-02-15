@@ -3,13 +3,39 @@ import { Link, useParams } from "react-router-dom";
 import useTasks from "../../hooks/useTasks.jsx";
 import Calendar from "../../components/Calendar/Calendar.jsx";
 import { AppRoutes } from "../RouteObjects/RouteObjects.js";
+import { useState } from "react";
+import { changeTask } from "../../Api.js";
 
 export default function EditTask() {
   const { id } = useParams();
   const { tasks, updateTask } = useTasks();
-  console.log(tasks);
   const currentTask = tasks?.find((item) => item._id === id);
-  console.log(currentTask);
+
+  const [selected, setSelected] = useState(currentTask.date);
+  const [changeCard, setChangeCard] = useState({
+    status: currentTask.status,
+    date: currentTask.date,
+    title: currentTask.title,
+    topic: currentTask.topic,
+    description: currentTask.description,
+  });
+
+  async function change() {
+    try {
+      await changeTask({
+        id,
+        status: changeCard.status,
+        date: selected,
+        title: changeCard.date,
+        topic: changeCard.topic,
+        description: changeCard.description,
+      }).then((data) => {
+        updateTask({ data });
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
   return (
     <div className="pop-browse" id="popBrowse">
@@ -27,46 +53,78 @@ export default function EditTask() {
                 <div>
                   <input
                     type="radio"
-                    value="Web Design"
+                    name="radios"
+                    id="no-status"
+                    value="Без статуса"
+                    checked={changeCard.status === "Без статуса"}
                     onChange={(e) =>
-                      setNewCard({ ...newCard, topic: e.target.value })
+                      setChangeCard({
+                        ...changeCard,
+                        status: e.target.value,
+                      })
                     }
                   />
-                  <label htmlFor="radio1">Без статуса</label>
+                  <label htmlFor="no-status">Без статуса</label>
 
                   <input
                     type="radio"
-                    value="Research"
+                    name="radios"
+                    id="to-do"
+                    value="Нужно сделать"
+                    checked={changeCard.status === "Нужно сделать"}
                     onChange={(e) =>
-                      setNewCard({ ...newCard, topic: e.target.value })
+                      setChangeCard({
+                        ...changeCard,
+                        status: e.target.value,
+                      })
                     }
                   />
-                  <label htmlFor="radio1">Нужно сделать</label>
+                  <label htmlFor="to-do">Нужно сделать</label>
 
                   <input
                     type="radio"
-                    value="Copywriting"
+                    name="radios"
+                    id="in-work"
+                    value="В работе"
+                    checked={changeCard.status === "В работе"}
                     onChange={(e) =>
-                      setNewCard({ ...newCard, topic: e.target.value })
+                      setChangeCard({
+                        ...changeCard,
+                        status: e.target.value,
+                      })
                     }
                   />
-                  <label htmlFor="radio1">В работе</label>
+                  <label htmlFor="in-work">В работе</label>
+
                   <input
                     type="radio"
-                    value="Research"
+                    name="radios"
+                    id="testing"
+                    value="Тестирование"
+                    checked={changeCard.status === "Тестирование"}
                     onChange={(e) =>
-                      setNewCard({ ...newCard, topic: e.target.value })
+                      setChangeCard({
+                        ...changeCard,
+                        status: e.target.value,
+                      })
                     }
                   />
-                  <label htmlFor="radio1">Тестирование</label>
+                  <label htmlFor="testing">Тестирование</label>
+
                   <input
                     type="radio"
-                    value="Research"
+                    name="radios"
+                    id="ready"
+                    value="Готово"
+                    checked={changeCard.status === "Готово"}
                     onChange={(e) =>
-                      setNewCard({ ...newCard, topic: e.target.value })
+                      setChangeCard({
+                        ...changeCard,
+                        status: e.target.value,
+                      })
                     }
                   />
-                  <label htmlFor="radio1">Готово</label>
+                  <label htmlFor="ready">Готово</label>
                 </div>
               </div>
               <p className="status__p subttl">Статус</p>
@@ -107,7 +165,7 @@ export default function EditTask() {
                   ></textarea>
                 </div>
               </form>
-              <Calendar />
+              <Calendar selected={selected} setSelected={setSelected} />
             </div>
             <div className="theme-down__categories theme-down">
               <p className="categories__p subttl">Категория</p>
@@ -118,8 +176,11 @@ export default function EditTask() {
 
             <div className="pop-browse__btn-edit">
               <div className="btn-group">
-                <button className="btn-edit__edit _btn-bg _hover01">
-                  <a href="#">Сохранить</a>
+                <button
+                  onClick={change}
+                  className="btn-edit__edit _btn-bg _hover01"
+                >
+                  Сохранить
                 </button>
                 <button className="btn-edit__edit _btn-bor _hover03">
                   <a href="#">Отменить</a>
